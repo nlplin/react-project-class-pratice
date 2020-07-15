@@ -1,0 +1,16 @@
+.subject {
+  background-color: #fff;
+  padding: 20px 10px;
+}
+.subject-btn {
+  margin-bottom: 20px;
+}
+.subject .update-btn {
+  margin-right: 20px;
+}
+.inputStyle {
+  width: 30%;
+}
+.confirmList {
+  margin-right: 12px;
+}
