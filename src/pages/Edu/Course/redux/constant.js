@@ -1,0 +1,1 @@
+export const GET_COURSE_PAGE = 'GET_COURSE_PAGE'

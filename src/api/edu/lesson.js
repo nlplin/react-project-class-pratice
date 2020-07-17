@@ -32,3 +32,13 @@ export function reqGetToken() {
     method: 'GET'
   })
 }
+
+export function reqDeleteLessonList(idList) {
+  return request({
+    url: `${BASE_URL}/batchRemove`,
+    method: "DELETE",
+    data:{
+      idList
+    }
+  });
+}

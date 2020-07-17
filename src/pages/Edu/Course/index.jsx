@@ -10,6 +10,7 @@ import {
   RedoOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import screenfull from 'screenfull'
 
 import { connect } from "react-redux";
 import SearchForm from "./SearchForm";
@@ -213,6 +214,11 @@ class Course extends Component {
         message.success("获取用户列表数据成功");
       });
   };
+
+  handleFullScreen = () => {
+    console.log(111)
+    screenfull.toggle()
+  }
 
   render() {
     const {
@@ -644,7 +650,7 @@ class Course extends Component {
                 <PlusOutlined />
                 <span>新建</span>
               </Button>
-              <Tooltip title="全屏" className="course-table-btn">
+              <Tooltip title="全屏" className="course-table-btn" onClick={this.handleFullScreen}>
                 <FullscreenOutlined />
               </Tooltip>
               <Tooltip title="刷新" className="course-table-btn">

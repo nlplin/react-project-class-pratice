@@ -7,7 +7,7 @@ import { reqGetToken } from '@api/edu/lesson.js'
 import * as qiniu from 'qiniu-js'
 import { nanoid } from 'nanoid'
 
-const MAX_VIDEO_SIZE = 20 * 1024 * 1024
+const MAX_VIDEO_SIZE = 30 * 1024 * 1024
 export default class MyUpload extends Component {
   state = {
     expires: 0,
@@ -20,6 +20,7 @@ export default class MyUpload extends Component {
 
     if (str) {
       const res = JSON.parse(str)
+      console.log(res)
       this.state = {
         expires: res.expires,
         uploadToken: res.uploadToken
@@ -51,13 +52,14 @@ export default class MyUpload extends Component {
     })
   }
   saveUpload = (uploadToken, expires) => {
-    // console.log(uploadToken, expires)
+    console.log(uploadToken, expires)
 
     const targetTime = Date.now() + expires * 1000 - 2 * 60 * 1000
     expires = targetTime
     // console.log(expires)
     const upload_token = JSON.stringify({ uploadToken, expires })
-    // console.log(upload_token)
+    console.log(upload_token)
+
     localStorage.setItem('upload_token', upload_token)
     this.setState({
       uploadToken,

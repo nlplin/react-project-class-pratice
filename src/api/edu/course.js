@@ -8,6 +8,17 @@ export function reqGetCourseList() {
     method: "GET",
   });
 }
+
+export function reqGetCoursePage({ page, limit, teacherId, subjectId, subjectParentId, title }) {
+  return request({
+    url: `${BASE_URL}/${page}/${limit}`,
+    method: "GET",
+    params:{
+      page, limit, teacherId, subjectId, subjectParentId, title
+    }
+  });
+}
+
 // 发布课程
 // 新增课程
 // 更新课程

@@ -11,3 +11,14 @@ export function reqGetChapterList({ page, limit, courseId }) {
     }
   });
 }
+
+export function reqDeleteChapterList(idList) {
+  return request({
+    url: `${BASE_URL}/batchRemove`,
+    method: "DELETE",
+    data:{
+      idList
+    }
+  });
+}
+// 快速复制黏贴

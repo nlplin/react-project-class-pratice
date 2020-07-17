@@ -47,3 +47,17 @@ export function reqDelSubject(id){
     method: "DELETE",
   });
 }
+// /admin/edu/subject
+export function reqGetAllFirstClass(){
+  return request({
+    // /admin/edu/subject/update
+    url: `${BASE_URL}`,
+    method: "GET",
+  });
+}
+export function reqGetSecClass(parentId){
+  return request({ 
+    url:`${BASE_URL}/get/${parentId}`,
+    method: "GET"
+  })
+}
