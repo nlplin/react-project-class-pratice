@@ -23,8 +23,8 @@ export default class Card extends Component {
         <Skeleton
           loading={loading}
           active
-          title={{ width: "100%" }}
-          paragraph={{ rows: 4, width: "100%" }}
+          title={{ width: "40%" }}
+          paragraph={{ rows: 3, width: "100%" }}
         >
           <div className="card-header">
             {title}

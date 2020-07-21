@@ -1,2 +1,4 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const REMOVE_TOKEN = "REMOVE_TOKEN";
+// export const MOBILE_LOGIN_SUCCESS = "MOBILE_LOGIN_SUCCESS";
+

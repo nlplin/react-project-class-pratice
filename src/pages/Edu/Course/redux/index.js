@@ -1,8 +1,8 @@
-import { getCoursePageSync } from './action'
+import { getCoursePage } from './actions'
 import courseList from './reducer'
 
 
 export {
-  getCoursePageSync,
+  getCoursePage,
   courseList
 }

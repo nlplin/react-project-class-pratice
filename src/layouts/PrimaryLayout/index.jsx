@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Dropdown, Breadcrumb } from "antd";
+import { Layout, Menu, Dropdown, Breadcrumb, Button } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -17,6 +17,7 @@ import { logout } from "@redux/actions/login";
 import { resetUser } from "../../components/Authorized/redux";
 import logo from "@assets/images/logo.png";
 import { findPathIndex } from "@utils/tools";
+import { PubSub } from 'pubsub-js'
 
 // 引入组件公共样式
 import "@assets/css/common.less";
@@ -37,6 +38,7 @@ const { Header, Sider, Content } = Layout;
 class PrimaryLayout extends Component {
   state = {
     collapsed: false,
+    currentLanguage: window.navigator.language === 'zh-CN' ? 'zh' : 'en'
   };
 
   toggle = () => {
@@ -94,7 +96,7 @@ class PrimaryLayout extends Component {
           /*
             path: /acl/role/list
               --> /acl/role
-            pathname: /acl/role/auth/xxx  
+            pathname: /acl/role/auth/xxx
           */
           const index = findPathIndex(path, "/");
           path = path.slice(0, index);
@@ -130,6 +132,13 @@ class PrimaryLayout extends Component {
       </Breadcrumb>
     );
   };
+  switchLanguage = language => () => {
+    console.log(language)
+    PubSub.publish('LANGUAGE', language)
+    this.setState({
+      currentLanguage : language
+    })
+  }
 
   render() {
     const { collapsed } = this.state;
@@ -140,7 +149,21 @@ class PrimaryLayout extends Component {
     } = this.props;
 
     const route = this.selectRoute(routes, pathname);
+    const initMenu = (
+      <Menu>
+        <Menu.Item>
+          <Button onClick={this.switchLanguage('zh')} type={this.state.currentLanguage === 'zh' ? 'link' : 'text'}>
+            中文
+          </Button>
+        </Menu.Item>
 
+        <Menu.Item>
+          <Button onClick={this.switchLanguage('en')} type={this.state.currentLanguage === 'en' ? 'link' : 'text'}>
+            English
+          </Button>
+        </Menu.Item>
+      </Menu>
+    )
     return (
       <Layout className="layout">
         <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -169,9 +192,11 @@ class PrimaryLayout extends Component {
                     <span>{user.name}</span>
                   </span>
                 </Dropdown>
-                <span className="site-layout-lang">
-                  <GlobalOutlined />
-                </span>
+                <Dropdown overlay={initMenu}>
+                  <span className="site-layout-lang">
+                    <GlobalOutlined />
+                  </span>
+                </Dropdown>
               </span>
             </span>
           </Header>

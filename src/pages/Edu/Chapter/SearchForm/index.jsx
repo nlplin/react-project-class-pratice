@@ -19,7 +19,7 @@ function SearchForm(props) {
   useEffect(() => {
     async function fetchData() {
       const res = await reqGetCourseList()
-      setCourseList(res)
+      setCourseList(res)  
       // console.log(res)
     }
     fetchData()

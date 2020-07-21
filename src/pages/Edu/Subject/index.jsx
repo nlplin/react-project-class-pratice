@@ -56,7 +56,7 @@ class Subject extends Component {
       console.log(value);
       this.setState({
         subjectId: value._id,
-        subjectTitle: value.title
+        subjectTitle: value.title 
       })
       this.oldState = value.title
     }

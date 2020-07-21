@@ -9,12 +9,22 @@ export function reqGetCourseList() {
   });
 }
 
-export function reqGetCoursePage({ page, limit, teacherId, subjectId, subjectParentId, title }) {
+export function reqGetCoursePage({
+  page,
+  limit,
+  title,
+  teacherId,
+  subjectId,
+  subjectParentId
+}) {
   return request({
     url: `${BASE_URL}/${page}/${limit}`,
     method: "GET",
-    params:{
-      page, limit, teacherId, subjectId, subjectParentId, title
+    params: {
+      title,
+      teacherId,
+      subjectId,
+      subjectParentId
     }
   });
 }

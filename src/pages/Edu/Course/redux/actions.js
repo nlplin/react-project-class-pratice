@@ -6,9 +6,9 @@ function getCousePageSync(data) {
   return { type: GET_COURSE_PAGE, data }
 }
 
-export function getCoursePageSync({ page, limit, teacherId, subjectId, subjectParentId, title }) {
+export function getCoursePage(data) {
   return dispatch => {
-    return reqGetCoursePage({ page, limit, teacherId, subjectId, subjectParentId, title }).then(res => {
+    return reqGetCoursePage(data).then(res => {
       dispatch(getCousePageSync(res))
       return res
     })
